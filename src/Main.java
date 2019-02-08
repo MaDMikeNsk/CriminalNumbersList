@@ -78,7 +78,6 @@ public class Main {
 
         //Поиск в отсортированном массиве
         Collections.sort(criminalArray);
-        i=0;
         startTime = System.nanoTime();
         int binarySearchResult = Collections.binarySearch(criminalArray, number);
         finishTime = System.nanoTime();
