@@ -24,7 +24,7 @@ public class Main {
         long finishTime;
 
         System.out.println("Подождите, идёт выполнение программы...");
-        startTime = System.nanoTime();
+        startTime = System.currentTimeMillis();
         //Блатные номера - буквы любые, цифры 001..009, 010..090, 111..999 для всех регионов. Всего 4_161_024
         for (String code : regionCodes) {
             for (String firstLetter : lettersInNumber) {
@@ -52,8 +52,8 @@ public class Main {
                 }
             }
         }
-        finishTime = System.nanoTime();
-        System.out.println("Базы блатных номеров сформированы за " + (double)(finishTime - startTime)/1000_000_000 + " с");
+        finishTime = System.currentTimeMillis();
+        System.out.println("Базы блатных номеров сформированы за " + (double)(finishTime - startTime)/1000 + " с");
         System.out.println("Количество номеров в базе: " + criminalArray.size());
         BufferedReader stream  = new BufferedReader(new InputStreamReader(System.in));
         do {
@@ -61,14 +61,14 @@ public class Main {
             number = stream.readLine().trim();
         } while (!number.matches("^[а-я][0-9]{3}[а-я]{2}[0-9]{2}$"));
 
-        // Поиск в неотсортированном ArrayList
-        String checkingNumber = "";
+        // Поиск в несортированном ArrayList
+        String tempNumber = "";
         boolean numberInList = false;
         int i=0;
         startTime = System.nanoTime();
-        while (!number.equals(checkingNumber) && i<criminalArray.size()){
-            checkingNumber = criminalArray.get(i);
-            if (number.equals(checkingNumber)){
+        while (!number.equals(tempNumber) && i<criminalArray.size()){
+            tempNumber = criminalArray.get(i);
+            if (number.equals(tempNumber)){
                 numberInList = true;
             }
             i++;
